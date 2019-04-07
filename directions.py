@@ -1,0 +1,1 @@
+NORTH, EAST, SOUTH, WEST = range(4)
