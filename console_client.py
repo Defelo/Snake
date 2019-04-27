@@ -18,6 +18,8 @@ def draw_board():
     board: List[List[int]] = [[0 for _ in range(wid)] for _ in range(hei)]
     for x, y in game.snake.body:
         board[y][x] = 1
+    for x, y in game.apples:
+        board[y][x] = 3
     x, y = game.snake.body[-1]
     board[y][x] = 2
 
@@ -31,6 +33,8 @@ def draw_board():
                 out[-1] += "\033[38;2;0;127;0m" + "\u2588" * 2
             elif cell == 2:
                 out[-1] += "\033[38;2;0;255;0m" + "\u2588" * 2
+            elif cell == 3:
+                out[-1] += "\033[38;2;255;0;0m" + "\u2588" * 2
     print("\033c" + "\n".join(out), end='\033[0m')
 
 
@@ -39,7 +43,7 @@ def tick():
     draw_board()
 
 
-timer: Timer = Timer(1, tick)
+timer: Timer = Timer(.15, tick)
 timer.start()
 
 draw_board()

@@ -40,7 +40,8 @@ class Snake:
         if not (0 <= headx < self.board.width and 0 <= heady < self.board.height):
             self.dead: bool = True
             return
-        self.body.pop(0)
+        if not self.board.eat_apple(headx, heady):
+            self.body.pop(0)
         if (headx, heady) in self.body:
             self.dead: bool = True
             return
