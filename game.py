@@ -1,4 +1,7 @@
-from snake import Snake
+try:
+    from snake import Snake
+except ImportError:
+    Snake = None
 
 
 class Game:

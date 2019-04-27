@@ -5,7 +5,6 @@ from game import Game
 
 
 class Snake:
-
     def __init__(self, name: str, colour: Tuple[int, int, int]):
         self.name: str = name
         self.colour: Tuple[int, int, int] = colour
@@ -41,7 +40,7 @@ class Snake:
         if not (0 <= headx < self.board.width and 0 <= heady < self.board.height):
             self.dead: bool = True
             return
-        self.body.pop()
+        self.body.pop(0)
         if (headx, heady) in self.body:
             self.dead: bool = True
             return
